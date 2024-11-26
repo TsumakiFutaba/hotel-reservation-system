@@ -7,9 +7,6 @@
 <!-- Palitan nyo na lang to ng title ng hotel naten !-->
     <title>Hotel Title - Facilities</title>
 
-<!-- SwiperJS addon -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-
 <!-- PHP REquirements for the links addons -->
   <?php require('inc/links.php'); ?>
   <style>

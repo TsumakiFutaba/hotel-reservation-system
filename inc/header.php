@@ -11,16 +11,16 @@
          <a class="nav-link active me-2" aria-current="page" href="landingpage.php">Home</a>
        </li>
        <li class="nav-item">
-         <a class="nav-link me-2" href="#">Rooms</a>
+         <a class="nav-link me-2" href="rooms.php">Rooms</a>
        </li>
        <li class="nav-item">
          <a class="nav-link me-2" href="facilities.php">Facilities</a>
        </li>
        <li class="nav-item">
-         <a class="nav-link me-2" href="#">Contact Us</a>
+         <a class="nav-link me-2" href="contact.php">Contact Us</a>
        </li>
        <li class="nav-item">
-         <a class="nav-link me-2" href="#">About</a>
+         <a class="nav-link me-2" href="about.php">About</a>
        </li>
      </ul>
      <div class="d-flex">
@@ -49,18 +49,18 @@
          <button type="reset" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
        </div>
        <div class="modal-body">
-       <div class="mb-3">
-         <label class="form-label">Email address</label>
-         <input type="email" class="form-control shadow-none">
-       </div>
-       <div class="mb-3">
-         <label class="form-label">Password</label>
-         <input type="email" class="form-control shadow-none">
-       </div>
-       <div class="d-flex align-items-center justify-content-between">
-         <button type="submit" class="btn btn-dark shadow-none">LOGIN</button>
-         <a href="javascript: void(0)" class="text-secondary text-decoration-none">Forgot password?</a>
-       </div>
+        <div class="mb-3">
+          <label class="form-label">Email address</label>
+          <input type="email" class="form-control shadow-none">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Password</label>
+          <input type="email" class="form-control shadow-none">
+        </div>
+        <div class="d-flex align-items-center justify-content-between">
+          <button type="submit" class="btn btn-dark shadow-none">LOGIN</button>
+          <a href="javascript: void(0)" class="text-secondary text-decoration-none">Forgot password?</a>
+        </div>
        </div>
      </form>
    </div>
