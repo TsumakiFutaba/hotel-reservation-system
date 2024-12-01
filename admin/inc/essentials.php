@@ -4,11 +4,13 @@
 
   define('SITE_URL','http://127.0.0.1/hotelreservationsystem/');
   define('ABOUT_IMG_PATH',SITE_URL.'images/About/');
+  define('CAROUSEL_IMG_PATH',SITE_URL.'images/Carousel/');
 
   //Backend upload process
   
   define('UPLOAD_IMAGE_PATH',$_SERVER['DOCUMENT_ROOT'].'/hotelreservationsystem/images/');
   define('ABOUT_FOLDER','About/');
+  define('CAROUSEL_FOLDER','Carousel/');
 
   function adminLogin()
   {
@@ -42,7 +44,7 @@
 
   function uploadImage($image,$folder)
   {
-    $valid_mime = ['image/jpeg','image/png','image/webp'];
+    $valid_mime = ['image/jpeg','image/png','image/webp','image/jpg'];
     $img_mime = $image['type'];
 
     if(!in_array($img_mime,$valid_mime)){
@@ -64,7 +66,7 @@
       }
     }
   }
-
+  
   function deleteImage($image,$folder)
   {
     if(unlink(UPLOAD_IMAGE_PATH.$folder.$image)){

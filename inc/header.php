@@ -1,5 +1,15 @@
+<?php
+  require('admin/inc/db_config.php');
+  require('admin/inc/essentials.php');
+
+
+  $contact_q = "SELECT * FROM `contact_details` WHERE `sr_no`=?";
+  $values = [1];
+  $contact_r = mysqli_fetch_assoc(select($contact_q,$values,'i'));
+?>
+
 <!-- NavBar !-->
-<nav class="navbar navbar-expand-lg navbar-light bg-white px-lg-3 py-lg-2 shadow-sm mb-5 sticky-top">
+<nav id="nav-bar" class="navbar navbar-expand-lg navbar-light bg-white px-lg-3 py-lg-2 shadow-sm mb-5 sticky-top">
  <div class="container-fluid">
    <a class="navbar-brand me-5 fw-bold fs-3 h-font" href="landingpage.php">Hotel Title</a>
    <button class="navbar-toggler shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -8,7 +18,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
        <li class="nav-item">
-         <a class="nav-link active me-2" aria-current="page" href="landingpage.php">Home</a>
+         <a class="nav-link me-2" href="landingpage.php">Home</a>
        </li>
        <li class="nav-item">
          <a class="nav-link me-2" href="rooms.php">Rooms</a>
@@ -34,7 +44,6 @@
    </div>
  </div>
 </nav>
-
 
 <!-- Login Modal !-->
 

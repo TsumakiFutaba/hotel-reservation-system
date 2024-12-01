@@ -36,28 +36,22 @@
 <!-- PHP Requirements for the Header -->
 <?php require('inc/header.php'); ?> 
 
-<!-- Image Swiper -->
+<!-- Image Carousel -->
 <div class="container-fluid px-lg-4 mt-4">
  <div class="swiper swiper-container">
     <div class="swiper-wrapper">
-      <div class="swiper-slide">
-        <img src="images/Carousel/01.png" class="w-100 d-block"/>
-      </div>
-      <div class="swiper-slide">
-        <img src="images/Carousel/02.png" class="w-100 d-block"/>
-      </div>
-      <div class="swiper-slide">
-        <img src="images/Carousel/03.png" class="w-100 d-block">
-      </div>
-      <div class="swiper-slide">
-        <img src="images/Carousel/04.png" class="w-100 d-block"/>
-      </div>
-      <div class="swiper-slide">
-        <img src="images/Carousel/05.png" class="w-100 d-block"/>
-      </div>
-      <div class="swiper-slide">
-        <img src="images/Carousel/06.png" class="w-100 d-block"/>
-      </div>
+      <?php
+        $res = selectAll('carousel');
+        while($row = mysqli_fetch_assoc($res))
+        {
+          $path = CAROUSEL_IMG_PATH;
+          echo <<<data
+            <div class="swiper-slide">
+              <img src="$path$row[image]" class="w-100 d-block"/>
+            </div>
+          data;
+        }
+      ?>
     </div>
     <div class="swiper-button-next"></div>
     <div class="swiper-button-prev"></div>
@@ -83,7 +77,6 @@
           <div class="col-lg-3 mb-3">
            <label class="form-label"style="font-weight 500;">Adult</label>
            <select class="form-select shadow-none">
-             <option selected>Open this select menu</option>
              <option value="1">One</option>
              <option value="2">Two</option>
              <option value="3">Three</option>
@@ -92,7 +85,6 @@
          <div class="col-lg-2 mb-3">
            <label class="form-label"style="font-weight 500;">Children</label>
            <select class="form-select shadow-none">
-             <option selected>Open this select menu</option>
              <option value="1">One</option>
              <option value="2">Two</option>
              <option value="3">Three</option>
@@ -341,10 +333,9 @@
 <!-- REVIEWS -->
 <h2 class="mt-5 pt-4 mb-4 text-center fw-bold h-font">REVIEWS</h2>
 
-<div class="container">
+<div class="container mt-5">
   <div class="swiper swiper-reviews">
     <div class="swiper-wrapper mb-5">
-
       <div class="swiper-slide bg-white p-4">
         <div class="profile d-flex align-items-center mb-3">
           <img src="images/Facilities/star.svg" width="30px">
@@ -422,39 +413,52 @@
 </div>
 
 <!-- Reach Us -->
+
 <h2 class="mt-5 pt-4 mb-4 text-center fw-bold h-font">REVIEWS</h2>
 
 <div class="container">
   <div class="row">
     <div class="col-lg-8 cold-md-8 p-4 mb-lg-0 mb-3 bg-white rounded">
-      <iframe class="w-100 rounded" height="320px" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7723.494440955256!2d121.0171571283668!3d14.556442744058046!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397c90264a0ed01%3A0x2b066ed57830cace!2sMakati%2C%20Metro%20Manila!5e0!3m2!1sen!2sph!4v1732525198524!5m2!1sen!2sph" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <iframe class="w-100 rounded" height="320px" src="<?php echo $contact_r['iframe'] ?>" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
     <div class="col-lg-4 cold-md-4">
       <div class="bg-white p-4 rounded mb-4">
         <h5>Call Us</h5>
-        <a href="tel: +639000000000" class="d-inline-block mb-2 text-decoration-none text-dark">
-          <i class="bi bi-telephone-fill">+639000000000</i>
+        <a href="tel: <?php echo $contact_r['pn1'] ?>" class="d-inline-block mb-2 text-decoration-none text-dark">
+          <i class="bi bi-telephone-fill"> +<?php echo $contact_r['pn1'] ?></i>
         </a>
         <br>
-        <a href="tel: +639000000000" class="d-inline-block text-decoration-none text-dark">
-          <i class="bi bi-telephone-fill">+639000000000</i>
-        </a>
+        <?php
+          if($contact_r['pn2']!=''){
+            echo<<<data
+            <a href="tel: +$contact_r[pn2]" class="d-inline-block text-decoration-none text-dark">
+              <i class="bi bi-telephone-fill"> +$contact_r[pn2]</i>
+            </a>
+            data;
+          }
+          ?>
       </div>
       <div class="bg-white p-4 rounded mb-4">
         <h5>Follow Us</h5>
-        <a href="#" class="d-inline-block mb-3">
-          <span class="badge bg-light text-dark fs-6 p-2">
-          <i class="bi bi-twitter-x me-1"></i> X/Twitter
-          </span>
-        </a>
-        <br>
-        <a href="#" class="d-inline-block mb-3">
+        <?php
+          if($contact_r['tw']!=''){
+            echo<<<data
+            <a href="$contact_r[tw]" class="d-inline-block mb-3">
+              <span class="badge bg-light text-dark fs-6 p-2">
+              <i class="bi bi-twitter-x me-1"></i> X/Twitter
+              </span>
+            </a>
+            <br>
+            data;
+          }
+          ?>
+        <a href="<?php echo $contact_r['fb'] ?>" class="d-inline-block mb-3">
           <span class="badge bg-light text-dark fs-6 p-2">
           <i class="bi bi-facebook me-1"></i> Facebook
           </span>
         </a>
         <br>
-        <a href="#" class="d-inline-block mb-3">
+        <a href="<?php echo $contact_r['insta'] ?>" class="d-inline-block mb-3">
           <span class="badge bg-light text-dark fs-6 p-2">
           <i class="bi bi-instagram me-1"></i> Instagram
           </span>
