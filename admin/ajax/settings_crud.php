@@ -75,7 +75,6 @@
       $res = insert($q,$values,'ss');
       echo $res;
     }
-    
   }
 
   if(isset($_POST['get_members']))
@@ -118,6 +117,7 @@
     else{
       echo 0;
     }
+    
   }
 
 

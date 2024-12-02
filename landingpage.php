@@ -305,23 +305,23 @@
 <div class="container">
   <div class="row justify-content-evenly px-lg-0 px-md-0 px-5">
     <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3">
-      <img src="images/Facilities/wifi.svg" width="80px">
+      <img src="images/Features/wifi.svg" width="80px">
       <h5 class="mt-3">Wifi</h5>
     </div>
     <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3">
-      <img src="images/Facilities/wifi.svg" width="80px">
+      <img src="images/Features/wifi.svg" width="80px">
       <h5 class="mt-3">Wifi</h5>
     </div>
     <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3">
-      <img src="images/Facilities/wifi.svg" width="80px">
+      <img src="images/Features/wifi.svg" width="80px">
       <h5 class="mt-3">Wifi</h5>
     </div>
     <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3">
-      <img src="images/Facilities/wifi.svg" width="80px">
+      <img src="images/Features/wifi.svg" width="80px">
       <h5 class="mt-3">Wifi</h5>
     </div>
     <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3">
-      <img src="images/Facilities/wifi.svg" width="80px">
+      <img src="images/Features/wifi.svg" width="80px">
       <h5 class="mt-3">Wifi</h5>
     </div>
     <div class="col-lg-12 text-center mt-5">
@@ -338,7 +338,7 @@
     <div class="swiper-wrapper mb-5">
       <div class="swiper-slide bg-white p-4">
         <div class="profile d-flex align-items-center mb-3">
-          <img src="images/Facilities/star.svg" width="30px">
+          <img src="images/Features/star.svg" width="30px">
           <h6 class="m-0 ms-2">Random user1</h6>
          </div>
          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
@@ -355,7 +355,7 @@
        </div>
       <div class="swiper-slide bg-white p-4">
        <div class="profile d-flex align-items-center mb-3">
-         <img src="images/Facilities/star.svg" width="30px">
+         <img src="images/Features/star.svg" width="30px">
          <h6 class="m-0 ms-2">Random user1</h6>
         </div>
         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
@@ -372,7 +372,7 @@
        </div> 
       <div class="swiper-slide bg-white p-4">
         <div class="profile d-flex align-items-center mb-3">
-          <img src="images/Facilities/star.svg" width="30px">
+          <img src="images/Features/star.svg" width="30px">
           <h6 class="m-0 ms-2">Random user1</h6>
          </div>
          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
@@ -389,7 +389,7 @@
        </div>
       <div class="swiper-slide bg-white p-4">
         <div class="profile d-flex align-items-center mb-3">
-          <img src="images/Facilities/star.svg" width="30px">
+          <img src="images/Features/star.svg" width="30px">
           <h6 class="m-0 ms-2">Random user1</h6>
          </div>
          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
@@ -414,7 +414,7 @@
 
 <!-- Reach Us -->
 
-<h2 class="mt-5 pt-4 mb-4 text-center fw-bold h-font">REVIEWS</h2>
+<h2 class="mt-5 pt-4 mb-4 text-center fw-bold h-font">REACH US</h2>
 
 <div class="container">
   <div class="row">
