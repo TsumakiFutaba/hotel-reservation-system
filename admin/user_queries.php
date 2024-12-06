@@ -4,38 +4,41 @@
    adminLogin();
 
    
-   if(isset($_GET['seen']))
-   {
+   if (isset($_GET['seen'])) {
     $frm_data = filteration($_GET);
 
-    if($frm_data['seen']=='all'){
-      $q = "UPDATE `user_queries` SET `seen`=?";
-      $values = [1];
-      if(update($q,$values,'i')){
-        alert('success','Marked all  as read!');
-      }
-      else{
-        alert('error','Operation Failed');
-      }
+    if ($frm_data['seen'] == 'all') {
+     
+     $seenValue = 1;
+     $query = "CALL UpdateSeen($seenValue, 0)";
+     $res = mysqli_query($GLOBALS['con'], $query);
+
+     if ($res) {
+         alert('success', 'Marked all as read!');
+     } else {
+         alert('error', 'Operation Failed');
+     }
+    } else {
+     
+     $seenValue = 1;
+     $queryId = $frm_data['seen'];
+     $query = "CALL UpdateSeen($seenValue, $queryId)";
+     $res = mysqli_query($GLOBALS['con'], $query);
+
+     if ($res) {
+         alert('success', 'Marked as read!');
+     } else {
+         alert('error', 'Operation Failed');
+     }
     }
-    else{
-      $q = "UPDATE `user_queries` SET `seen`=? WHERE `sr_no`=?";
-      $values = [1,$frm_data['seen']];
-      if(update($q,$values,'ii')){
-        alert('success','Marked as read!');
-      }
-      else{
-        alert('error','Operation Failed');
-      }
-    }
-   }
+}
 
    if(isset($_GET['del']))
    {
     $frm_data = filteration($_GET);
 
     if($frm_data['del']=='all'){
-      $q = "DELETE FROM `user_queries`";
+      $q = "CALL deleteAll_messages";
       if(mysqli_query($con,$q)){
         alert('success','All Message has been deleted!');
       }
@@ -44,7 +47,7 @@
       }
     }
     else{
-      $q = "DELETE FROM `user_queries` WHERE `sr_no`=?";
+      $q = "CALL delete_message(?)";
       $values = [$frm_data['del']];
       if(delete($q,$values,'i')){
         alert('success','Message Data Deleted!');
@@ -106,7 +109,7 @@
               </thead>
               <tbody>
                 <?php
-                  $q = "SELECT * FROM `user_queries` ORDER BY `sr_no` DESC";
+                  $q = "CALL GetUserQueries";
                   $data = mysqli_query($con,$q);
                   $i=1;
 
@@ -119,7 +122,7 @@
                     $seen.= "<a href='?del=$row[sr_no]' class='btn btn-sm rounded-pill btn-danger mt-2'>Delete</a>";
 
                     echo<<<query
-                      <tr>
+                      <tr class='align-middle'>
                         <td>$i</td>
                         <td>$row[name]</td>
                         <td>$row[email]</td>
@@ -141,7 +144,6 @@
        </div>
      </div>
    </div>
-
 
    <?php require('inc/scripts.php'); ?>
 
