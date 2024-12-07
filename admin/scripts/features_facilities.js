@@ -59,7 +59,7 @@ function rem_feature(val)
       get_features();
     }
     else if(this.responseText == 'room_added'){
-      alert('error', 'Feature is added in room')
+      alert('error', 'This feature is added in a room!')
     }
     else{
       alert('error','Server is Down!');
@@ -134,7 +134,7 @@ function get_facilities()
       get_facilities();
     }
     else if(this.responseText == 'room_added'){
-      alert('error', 'Facility is added in room')
+      alert('error', 'This facility is added in a room!')
     }
     else{
       alert('error','Server is Down!');
