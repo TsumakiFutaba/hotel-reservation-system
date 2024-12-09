@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 07, 2024 at 06:41 AM
+-- Generation Time: Dec 09, 2024 at 04:57 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -175,16 +175,19 @@ CREATE TABLE `rooms` (
   `adult` int(11) NOT NULL,
   `children` int(11) NOT NULL,
   `description` varchar(350) NOT NULL,
-  `status` tinyint(4) NOT NULL DEFAULT 1
+  `status` tinyint(4) NOT NULL DEFAULT 1,
+  `removed` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `rooms`
 --
 
-INSERT INTO `rooms` (`id`, `name`, `area`, `price`, `quantity`, `adult`, `children`, `description`, `status`) VALUES
-(11, 'Simple Room', 150, 500, 4, 2, 2, 'Test Description', 1),
-(12, 'Master Bedroom', 500, 1000, 10, 6, 4, 'This is a master bedroom.', 1);
+INSERT INTO `rooms` (`id`, `name`, `area`, `price`, `quantity`, `adult`, `children`, `description`, `status`, `removed`) VALUES
+(11, 'Simple Room', 150, 500, 4, 2, 2, 'This is a Simple Room', 1, 0),
+(12, 'Master Bedroom', 500, 1000, 10, 6, 4, 'This is a master bedroom.', 1, 0),
+(13, 'Test Room', 231, 111, 2, 1, 1, 'Test', 1, 1),
+(14, 'Deluxe Room', 450, 899, 6, 3, 3, 'This is a Deluxe Room', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -207,9 +210,13 @@ INSERT INTO `room_facilities` (`sr_no`, `room_id`, `facilities_id`) VALUES
 (8, 12, 8),
 (9, 12, 9),
 (10, 12, 10),
-(12, 11, 8),
-(13, 11, 9),
-(14, 11, 10);
+(23, 14, 7),
+(24, 14, 8),
+(25, 14, 9),
+(26, 14, 10),
+(27, 11, 8),
+(28, 11, 9),
+(29, 11, 10);
 
 -- --------------------------------------------------------
 
@@ -231,9 +238,34 @@ INSERT INTO `room_features` (`sr_no`, `room_id`, `features_id`) VALUES
 (27, 12, 14),
 (28, 12, 15),
 (29, 12, 16),
-(30, 11, 14),
-(31, 11, 15),
-(32, 11, 16);
+(41, 14, 14),
+(42, 14, 15),
+(43, 14, 16),
+(44, 11, 14),
+(45, 11, 15),
+(46, 11, 16);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `room_images`
+--
+
+CREATE TABLE `room_images` (
+  `sr_no` int(11) NOT NULL,
+  `room_id` int(11) NOT NULL,
+  `image` varchar(150) NOT NULL,
+  `thumb` tinyint(4) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `room_images`
+--
+
+INSERT INTO `room_images` (`sr_no`, `room_id`, `image`, `thumb`) VALUES
+(5, 11, 'IMG_55399.png', 1),
+(10, 12, 'IMG_38412.png', 1),
+(11, 14, 'IMG_96810.png', 1);
 
 -- --------------------------------------------------------
 
@@ -353,6 +385,13 @@ ALTER TABLE `room_features`
   ADD KEY `rm id` (`room_id`);
 
 --
+-- Indexes for table `room_images`
+--
+ALTER TABLE `room_images`
+  ADD PRIMARY KEY (`sr_no`),
+  ADD KEY `room_id` (`room_id`);
+
+--
 -- Indexes for table `settings`
 --
 ALTER TABLE `settings`
@@ -408,19 +447,25 @@ ALTER TABLE `features`
 -- AUTO_INCREMENT for table `rooms`
 --
 ALTER TABLE `rooms`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `room_facilities`
 --
 ALTER TABLE `room_facilities`
-  MODIFY `sr_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `sr_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `room_features`
 --
 ALTER TABLE `room_features`
-  MODIFY `sr_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `sr_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+
+--
+-- AUTO_INCREMENT for table `room_images`
+--
+ALTER TABLE `room_images`
+  MODIFY `sr_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `settings`
@@ -457,6 +502,12 @@ ALTER TABLE `room_facilities`
 ALTER TABLE `room_features`
   ADD CONSTRAINT `features id` FOREIGN KEY (`features_id`) REFERENCES `features` (`id`) ON UPDATE NO ACTION,
   ADD CONSTRAINT `rm id` FOREIGN KEY (`room_id`) REFERENCES `rooms` (`id`) ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `room_images`
+--
+ALTER TABLE `room_images`
+  ADD CONSTRAINT `room_images_ibfk_1` FOREIGN KEY (`room_id`) REFERENCES `rooms` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
