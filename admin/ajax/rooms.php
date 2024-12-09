@@ -259,11 +259,10 @@
       }
       else{
         $thumb_btn = "<button onclick='thumb_image($row[sr_no],$row[room_id])' class='btn btn-secondary btn-sm shadow-none'>
-          <i class='bi bi-check-lg'></i>
-        </button>";
+        <i class='bi bi-check-lg'></i>
+      </button>";
       }
       
-
       echo<<<data
         <tr class='align-middle'>
           <td><img src='$path$row[image]' class='img-fluid'></td>
