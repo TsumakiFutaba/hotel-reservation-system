@@ -20,7 +20,6 @@
   right: 25px;
 }
 
-/* Hide input arrow numbers */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
 -webkit-appearance: none;
@@ -35,4 +34,26 @@ margin: 0;
   background-color: var(--teal_hover);
   border-color: var(--teal_hover);
 }
+
+.btn-google {
+  background-color: transparent;
+  border: none;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 2rem;
+  cursor: pointer;
+  border-radius: 50px;
+}
+
+.btn-google svg {
+  width: 36px;
+  height: 36px;
+}
+
+.btn-google:hover svg path {
+  opacity: 0.8;
+}
+
+
 

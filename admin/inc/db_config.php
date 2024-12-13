@@ -23,11 +23,23 @@
    }
 
    function selectAll($table)
-   {
+{
     $con = $GLOBALS['con'];
-    $res = mysqli_query($con,"SELECT * FROM $table");
+    
+
+    $table = mysqli_real_escape_string($con, $table);
+    $res = mysqli_query($con, "CALL SelectAllFromTable('$table')");
+
+    if (!$res) {
+        die("Query failed: " . mysqli_error($con));
+    }
+    while (mysqli_next_result($con)) {
+        if ($result = mysqli_store_result($con)) {
+            mysqli_free_result($result);
+        }
+    }
     return $res;
-   }
+}
 
    function select($sql,$values,$datatypes)
    {
